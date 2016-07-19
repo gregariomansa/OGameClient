@@ -1,0 +1,31 @@
+{
+  "Proxies": {},
+  "cookieUrls": [
+    "https://de.ogame.gameforge.com/"
+  ],
+  "logins": {
+    "Benutzer404": {
+      "password": "passwort123",
+      "server": "s141-de.ogame.gameforge.com"
+    }
+  },
+  "UA": "",
+  "Requests": {
+    "PckOffLogin": {
+      "Host": "de.ogame.gameforge.com",
+      "Estimated-Response": "200",
+      "Method": "POST",
+      "URL": "https://de.ogame.gameforge.com/main/login",
+      "formdata": "kid=&uni=<server>&login=<user>&pass=<pass>",
+      "formreplacements": {
+        "<server>": "UserServer",
+        "<user>": "UserUsername",
+        "<pass>": "UserPassword"
+      },
+      "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+      "content-type": "application/x-www-form-urlencoded",
+      "encoding": "zip, deflate, br",
+      "connection": "keep-alive"
+    }
+  }
+}
