@@ -1,3 +1,5 @@
+import time
+
 import requests
 
 import NetworkHandler
@@ -37,8 +39,6 @@ def invokePacket(packetName, save, networkHandler):
         prepped.headers["Accept"] = packet["accept"]
         prepped.headers["Accept-Encoding"] = packet["encoding"]
         prepped.headers["Connection"] = packet["connection"]
-        print("[Debug] Body is " + prepped.body)
-        print(prepped.headers)
     prepped.headers["Host"] = packet["Host"]
     resp = networkHandler.session.send(prepped, allow_redirects=False)
     try:
@@ -73,3 +73,7 @@ for client in clients:
     client.grabCookies(saveFile.cookieUrls)
 
 invokePacket("PckOffLogin", saveFile, clients[0])
+
+while True:
+    time.sleep(5)
+    print("Idling...")
