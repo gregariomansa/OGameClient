@@ -40,13 +40,25 @@ def invokePacket(packetName, save, networkHandler):
         print("[Debug] Body is " + prepped.body)
         print(prepped.headers)
     prepped.headers["Host"] = packet["Host"]
-    resp = networkHandler.session.send(prepped)
+    resp = networkHandler.session.send(prepped, allow_redirects=False)
+    try:
+        shouldRedirect = resp.headers["Location"] != None
+    except:
+        shouldRedirect = False
+    while shouldRedirect:
+        request = requests.Request("Get", resp.headers["Location"])
+        print("[LOG] Redirecting to " + resp.headers['Location'] + "...")
+        prep = request.prepare()
+        resp = networkHandler.session.send(prep)
+        try:
+            shouldRedirect = resp.headers["Location"] != None
+        except:
+            shouldRedirect = False
     if str(resp.status_code) != packet["Estimated-Response"]:
         print("[WARNING] Packet " + packetName + " got a failed Response, expected " + packet[
-            "Estimated-Response"] + " got " + str(resp.status_code))
-        print(resp.history[0].headers)
+            "Estimated-Response"] + ", got " + str(resp.status_code))
     else:
-        print("[LOG]Successfully send packet" + packetName + " and received response with history")
+        print("[LOG]Successfully send packet" + packetName)
 
 
 clients = []
