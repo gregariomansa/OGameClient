@@ -1,10 +1,12 @@
 {
   "Retro": {
     "login": "http://ogame1304.de/game/reg/login.php",
-    "cookie": "http://ogame1304.de/game/reg/login.php"
+    "cookie": "http://ogame1304.de/game/reg/login.php",
+    "loginpacket": "PckRetroLogin"
   },
   "Oberon": {
     "login": "http://de.ogame.gameforge.com/main/login",
-    "cookie": "http://s141-de.ogame.gameforge.com"
+    "cookie": "http://s141-de.ogame.gameforge.com",
+    "loginpacket": "PckDELogin"
   }
 }

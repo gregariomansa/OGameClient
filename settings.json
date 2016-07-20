@@ -11,7 +11,7 @@
   },
   "UA": "",
   "Requests": {
-    "PckOffLogin": {
+    "PckDELogin": {
       "Host": "de.ogame.gameforge.com",
       "URL": "<ServerLoginPHP>",
       "Estimated-Response": "200",
