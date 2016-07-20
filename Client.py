@@ -70,4 +70,4 @@ for user in saveFile.logins:
 for client in clients:
     client.grabCookies(saveFile.servers[client.Server]["cookie"])
 
-invokePacket("PckOffLogin", saveFile, clients[0])
+invokePacket("PckDELogin", saveFile, clients[0])
