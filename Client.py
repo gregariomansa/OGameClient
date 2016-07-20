@@ -1,5 +1,3 @@
-import time
-
 import requests
 
 import NetworkHandler
@@ -18,7 +16,7 @@ def matchVariable(inputs, saveFile, networkHandler):
 
 def invokePacket(packetName, save, networkHandler):
     packet = save.Packets[packetName]
-    url = packet["URL"]
+    url = packet["URL"].replace("<ServerLoginPHP>", save.servers[networkHandler.Server]["login"])
     packetBody = 0
     if "querydata" in packet:
         url += packet["querydata"]
@@ -62,7 +60,7 @@ def invokePacket(packetName, save, networkHandler):
 
 
 clients = []
-saveFile = SettingsLoader.Settings("settings.json")
+saveFile = SettingsLoader.Settings("settings.json", "servers.json")
 
 for user in saveFile.logins:
     clients.append(
@@ -70,10 +68,6 @@ for user in saveFile.logins:
                                       proxy=saveFile.Proxies, UA=saveFile.UA))
 
 for client in clients:
-    client.grabCookies(saveFile.cookieUrls)
+    client.grabCookies(saveFile.servers[client.Server]["cookie"])
 
 invokePacket("PckOffLogin", saveFile, clients[0])
-
-while True:
-    time.sleep(5)
-    print("Idling...")

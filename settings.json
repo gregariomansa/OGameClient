@@ -6,16 +6,16 @@
   "logins": {
     "Benutzer404": {
       "password": "passwort123",
-      "server": "s141-de.ogame.gameforge.com"
+      "server": "Oberon"
     }
   },
   "UA": "",
   "Requests": {
     "PckOffLogin": {
       "Host": "de.ogame.gameforge.com",
+      "URL": "<ServerLoginPHP>",
       "Estimated-Response": "200",
       "Method": "POST",
-      "URL": "https://de.ogame.gameforge.com/main/login",
       "formdata": "kid=&uni=<server>&login=<user>&pass=<pass>",
       "formreplacements": {
         "<server>": "UserServer",

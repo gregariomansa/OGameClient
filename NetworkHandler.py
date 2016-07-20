@@ -2,7 +2,7 @@ import requests
 
 
 class NetworkHandler():
-    def __init__(self, user, password, server, proxy={}, UA=""):
+    def __init__(self, user, password, server, proxy="", UA=""):
         self.proxy = proxy
         self.session = requests.Session()
         self.UA = UA
@@ -19,8 +19,7 @@ class NetworkHandler():
     def getCookies(self):
         return self.session.cookies
 
-    def grabCookies(self, urls):
-        for url in urls:
+    def grabCookies(self, url):
             req = requests.Request("GET", url)
             prep = req.prepare()
             prep = self.applyUserAgent(prep)

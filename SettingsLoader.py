@@ -4,19 +4,19 @@ import json
 class Settings():
     settingsFileHandle = 0
     UA = ""
+    servers = {}
     Proxies = {}
     logins = []
     cookieUrls = []
     Packets = {}
     Requests = {}
-
     def grabData(self, key, data):
         if key in data:
             return data[key]
         else:
             print("[ERROR]" + key + " not defined! Please fix it!")
 
-    def __init__(self, name):
+    def __init__(self, name, servers):
         try:
             self.settingsFileHandle = open(name, "r")
             data = json.load(self.settingsFileHandle)
@@ -27,6 +27,7 @@ class Settings():
             self.logins = self.grabData("logins", data)
             self.cookieUrls = self.grabData("cookieUrls", data)
             self.settingsFileHandle.close()
+            self.servers = json.load(open(servers, "r"))
         except Exception as e:
             print(e)
             self.settingsFileHandle = open(name, "w")
